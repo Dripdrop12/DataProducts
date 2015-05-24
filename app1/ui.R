@@ -1,7 +1,8 @@
 library(shiny)
 library(ggplot2)
 
-dataset <- dat
+dataset <- read.csv("dat.csv")
+dat <- read.csv("dat.csv")
 
 shinyUI(navbarPage(title = "Navbar",collapsible = TRUE,fluid = TRUE,inverse = F,
         tabPanel("PDA Explorer",

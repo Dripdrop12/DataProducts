@@ -1,0 +1,37 @@
+PDA Explorer Pitch
+========================================================
+author: Jonathan Hill
+date: `r date()`
+
+End to End Solution
+========================================================
+
+PDA Explorer makes data accessible by:
+
+- Merging tables from three Aptify services
+- Performing data manipulations for ploting
+- Providing easy options for the end user to decide what they'd like to see
+- Updating quickly in real time
+
+Data
+========================================================
+
+```{r,results="hide"}
+dat <- read.csv("dat.csv")
+variables <- names(dat)
+```
+### Options List:
+`r variables`.
+
+Better than a static base plot
+========================================================
+
+```{r, echo=FALSE}
+plot(dat$Membership.Duration, dat$Order.Total, xlab= "Membership Duration", ylab= "Order Total", main = "Orders for a given membership duration")
+```
+
+The App
+========================================================
+PDA Explorer puts the power of statistical programming in the hands of any staff member and allows them to explore the data with drop down menus and checkboxes.
+
+[Start Using PDA Explorer](https://dripdrop12.shinyapps.io/PDA_Explorer/)
