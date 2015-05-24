@@ -1,0 +1,40 @@
+---
+title: "PDA Explorer"
+author: "Jonathan Hill"
+date: "Sunday, May 24, 2015"
+output: html_document
+---
+
+## How to use this application
+
+#### Sample Size
+Subsets the data to include a random sample of the given sample size.
+
+#### EU Checkbox
+Filters records based on the preferred country field in Aptify.  If it is checked, it includes all EU member states plus Switzerland.  If it is not checked, it includes all countries.
+- This checkbox over-rides the sample size and includes all EU records.
+
+#### Smooth Checkbox
+Adds a non-liner smoother to the scatterplot with up to 10 critical points.
+
+#### Jitter Checkbox
+When observations are stacked, jitter will randomly seperate them so that you can see how many there are.
+
+#### X and Y
+Variables for the x and y axis of the scatter plot.
+
+#### Color
+Specifies the color of the observations.
+
+#### Facet Row
+Subsets the data by the option chosen, then plots each subset as a row.
+
+#### Facet Column
+Subsets the data by the option chosen, then plots each subset as a column.
+
+## Last Update
+```{r,echo=FALSE, results="hide"}
+todaysDate <- date()          
+```
+`r todaysDate`.
+

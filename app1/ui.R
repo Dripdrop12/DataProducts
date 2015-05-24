@@ -3,7 +3,9 @@ library(ggplot2)
 
 dataset <- dat
 
-shinyUI(fluidPage(
+shinyUI(navbarPage(title = "Navbar",collapsible = TRUE,fluid = TRUE,inverse = F,
+        tabPanel("PDA Explorer",
+                 fluidPage(
         
         title = "PDA Explorer",
         
@@ -14,9 +16,10 @@ shinyUI(fluidPage(
         fluidRow(
                 column(3,
                        h4("PDA Explorer"),
-                       dateRangeInput(inputId = 'joindate', 
-                                      label = 'Join Date',
-                                      start = "2014-1-1"),
+                       sliderInput('sampleSize', 'Sample Size', 
+                                   min=1, max=5000,
+                                   value=min(400, nrow(dataset)), 
+                                   step=50, round=0),
                        br(),
                        checkboxInput('eu', 'EU'),
                        checkboxInput('smooth', 'Smooth'),
@@ -34,4 +37,7 @@ shinyUI(fluidPage(
                                    c(None='.', names(dat[sapply(dat, is.factor)])))
                 )
         )
+)),      tabPanel("About This Application",
+                 includeHTML("about.html")
+                 )                              
 ))

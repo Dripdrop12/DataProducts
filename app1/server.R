@@ -3,23 +3,18 @@ library(ggplot2)
 library(dplyr)
 
 dat <- read.csv("dat.csv")
+dat$Join.Date <- as.Date(dat$Join.Date, format = "%m/%d/%Y")
 
 shinyServer(function(input, output) {
         
-        
-        dataset <- reactive({
-                # Variable names for input values #
-                isEU <- input$eu
-                minJoin <- input$joindate[1]
-                maxJoin <- input$joindate[2]
-                dat %>% select(everything()) %>%
-                        filter(Join.Date >= minJoin,
-                               Join.Date <= maxJoin)
-                dat <- as.data.frame(dat)
-        })      
+        dataset <- reactive({dat[sample(nrow(dat), input$sampleSize), ]
+        })  
         
         output$plot <- renderPlot({
-                                
+                
+                if (input$eu)
+                        dataset <- reactive({dat[dat$EU=="EU", ]})
+                
                 p <- ggplot(dataset(), aes_string(x=input$x, y=input$y)) + geom_point()
                 
                 if (input$color != 'None')
